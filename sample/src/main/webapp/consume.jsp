@@ -8,22 +8,22 @@
 </head>
 <body>
 <%
-  String certificateS ="MIIDGTCCAoKgAwIBAgIBATANBgkqhkiG9w0BAQUFADBnMQswCQYDVQQGEwJVUzET"+
-"MBEGA1UECAwKQ2FsaWZvcm5pYTEVMBMGA1UEBwwMU2FudGEgTW9uaWNhMREwDwYD"+
-"VQQKDAhPbmVMb2dpbjEZMBcGA1UEAwwQYXBwLm9uZWxvZ2luLmNvbTAeFw0xMzA2"+
-"MDUxNzE2MjBaFw0xODA2MDUxNzE2MjBaMGcxCzAJBgNVBAYTAlVTMRMwEQYDVQQI"+
-"DApDYWxpZm9ybmlhMRUwEwYDVQQHDAxTYW50YSBNb25pY2ExETAPBgNVBAoMCE9u"+
-"ZUxvZ2luMRkwFwYDVQQDDBBhcHAub25lbG9naW4uY29tMIGfMA0GCSqGSIb3DQEB"+
-"AQUAA4GNADCBiQKBgQCsalDL15zSKeEGy9c0Hao7+G02x6k/MlZuCwEvkPKUcl9Q"+
-"dGEgTW9uaWNhMREwDwYDVQQKDAhPbmVMb2dpbjEZMBcGA1UEAwwQYXBwLm9uZWxv"+
-"Z2luLmNvbYIBATAOBgNVHQ8BAf8EBAMCBPAwDQYJKoZIhvcNAQEFBQADgYEANZvz"+
-"lB1Aq84AdOvsn2XKxBB/PmNZLqnM1VWRPaNcvjafx7eHd5qayXFNQz+bOLujENmg"+
-"Am5padbydG89SeefpOGcY2TMsVt0RUzxTnN3Zq5G6Ja2fAKOEX01ejdoPPMmStqq"+
-"Sw8k1wPUU8uLYJG5wmjf0rCb8RVaeAwMc+wcEIA=";
+  String cert =
+       "MIICQDCCAakCBEeNB0swDQYJKoZIhvcNAQEEBQAwZzELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNh"+
+       "bGlmb3JuaWExFDASBgNVBAcTC1NhbnRhIENsYXJhMQwwCgYDVQQKEwNTdW4xEDAOBgNVBAsTB09w"+
+       "ZW5TU08xDTALBgNVBAMTBHRlc3QwHhcNMDgwMTE1MTkxOTM5WhcNMTgwMTEyMTkxOTM5WjBnMQsw"+
+       "CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEUMBIGA1UEBxMLU2FudGEgQ2xhcmExDDAK"+
+       "BgNVBAoTA1N1bjEQMA4GA1UECxMHT3BlblNTTzENMAsGA1UEAxMEdGVzdDCBnzANBgkqhkiG9w0B"+
+       "AQEFAAOBjQAwgYkCgYEArSQc/U75GB2AtKhbGS5piiLkmJzqEsp64rDxbMJ+xDrye0EN/q1U5Of+"+
+       "RkDsaN/igkAvV1cuXEgTL6RlafFPcUX7QxDhZBhsYF9pbwtMzi4A4su9hnxIhURebGEmxKW9qJNY"+
+       "Js0Vo5+IgjxuEWnjnnVgHTs1+mq5QYTA7E6ZyL8CAwEAATANBgkqhkiG9w0BAQQFAAOBgQB3Pw/U"+
+       "QzPKTPTYi9upbFXlrAKMwtFf2OW4yvGWWvlcwcNSZJmTJ8ARvVYOMEVNbsT4OFcfu2/PeYoAdiDA"+
+       "cGy/F2Zuj8XJJpuQRSE6PtQqBuDEHjjmOQJ0rV/r8mO1ZCtHRhpZ5zYRjhRC9eCbjx9VrFax0JDC"+
+       "/FfwWigmrW0Y0Q==";
 
   // user account specific settings. Import the certificate here
   AccountSettings accountSettings = new AccountSettings();
-  accountSettings.setCertificate(certificateS);
+  accountSettings.setCertificate(cert);
 
   Response samlResponse = new Response(accountSettings);
   samlResponse.loadXmlFromBase64(request.getParameter("SAMLResponse"));
