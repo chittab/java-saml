@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.onelogin.*,com.onelogin.saml.*" %>
+<%@ page import="java.util.*,com.onelogin.*,com.onelogin.saml.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,22 +29,27 @@
   samlResponse.loadXmlFromBase64(request.getParameter("SAMLResponse"));
   samlResponse.setDestinationUrl(request.getRequestURL().toString()); 
 
-  if (samlResponse.isValid()) {
-
+  if (samlResponse.isValid()) 
+  {
     // the signature of the SAML Response is valid. The source is trusted
-  	java.io.PrintWriter writer = response.getWriter();
-  	writer.write("OK!");
-  	String nameId = samlResponse.getNameId();
-  	writer.write(nameId);
-  	writer.flush();
-	
-  } else {
-
+    java.io.PrintWriter writer = response.getWriter();
+    writer.write("OK!");
+    String nameId = samlResponse.getNameId();
+    writer.write("<br/>Hello " + nameId);
+    writer.write("! You have been authenticated. The SSO server returned the following attributes:<br/>");
+    Map<String, ArrayList> attrs = samlResponse.getAttributes();
+    for(String attr : attrs.keySet())
+    {
+      writer.write("<br/>   *** " + attr + ": " + attrs.get(attr));
+    }
+    writer.flush();
+  } 
+  else 
+  {
     // the signature of the SAML Response is not valid
-  	java.io.PrintWriter writer = response.getWriter();
-  	writer.write("Failed");
-  	writer.flush();
-
+    java.io.PrintWriter writer = response.getWriter();
+    writer.write("FAILED: The SAML Response has expired or invalid.");
+    writer.flush();
   }
 %>
 </body>

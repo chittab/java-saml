@@ -40,7 +40,10 @@
   
   // Generate an AuthRequest and send it to the identity provider
   AuthRequest authReq = new AuthRequest(appSettings, accSettings);
-  String reqString = accSettings.getIdp_sso_target_url()+"?SAMLRequest=" + URLEncoder.encode(authReq.getRequest(AuthRequest.base64),"UTF-8");
+  String reqString 
+    = accSettings.getIdp_sso_target_url()
+      +"?SAMLRequest=" 
+      + URLEncoder.encode(authReq.getRequest(AuthRequest.base64),"UTF-8");
   response.sendRedirect(reqString);
 %>
 </head>

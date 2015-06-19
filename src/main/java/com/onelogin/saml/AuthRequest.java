@@ -45,6 +45,7 @@ public class AuthRequest {
         writer.writeAttribute("IssueInstant", this.issueInstant);
         writer.writeAttribute("ProtocolBinding", "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST");
         writer.writeAttribute("ProviderName", "https://www.mywebapp.com");
+        writer.writeAttribute("Destination", "https://qa-sungard.sso.sungardas.io/service/saml2/idp");
         writer.writeAttribute("AssertionConsumerServiceURL", this.appSettings.getAssertionConsumerServiceUrl());
 
         writer.writeStartElement("saml","Issuer","urn:oasis:names:tc:SAML:2.0:assertion");
